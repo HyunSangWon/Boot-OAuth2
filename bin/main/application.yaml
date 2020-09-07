@@ -1,0 +1,19 @@
+application:
+   version: v1.0.0
+   title: oauth2-example
+server:
+   port: 8080
+spring:
+   thymeleaf:
+      cache: false
+      mode: HTML
+   devtools:
+      livereload:
+       enabled: true
+      restart:
+          enabled: true
+custom:
+   oauth2:
+      kakao:
+         client-id: 7286b354feb17bd3627030a4d3a651b3
+         client-secret: hvSckkTr6OaFpNBBtoevC1YFnuElakaM
