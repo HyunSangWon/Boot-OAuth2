@@ -15,5 +15,5 @@ spring:
 custom:
    oauth2:
       kakao:
-         client-id: 7286b354feb17bd3627030a4d3a651b3
-         client-secret: hvSckkTr6OaFpNBBtoevC1YFnuElakaM
+         client-id: INSERT_YOUR_ID
+         client-secret: INSERT_YOUR_SECRET
