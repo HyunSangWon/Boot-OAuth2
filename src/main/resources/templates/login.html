@@ -12,14 +12,13 @@
 	<a href="javascript:;" class="btn_social" data-social="naver">네이버 로그인</a>
 	<br />
 	<script> 
-	var socials = document.getElementsByClassName("btn_social"); 
-	for(var social of socials) {
-		social.addEventListener('click', function(){ 
-			var socialType = this.getAttribute('data-social'); 
+	let socials = document.getElementsByClassName("btn_social");
+	for(let social of socials) {
+		social.addEventListener('click', function(){
+			let socialType = this.getAttribute('data-social');
 			location.href="/oauth2/authorization/" + socialType;
 			});
 		} 
 	</script>
 </body>
 </html>
-
