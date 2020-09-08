@@ -1,6 +1,7 @@
 package com.sangwon.oauth.conf;
 
 import static com.sangwon.oauth.conf.SocialType.KAKAO;
+import static com.sangwon.oauth.conf.SocialType.NAVER;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		httpSecurity.authorizeRequests()
 		.antMatchers("/","/login/**","/auth/**").permitAll()
 		.antMatchers("/kakao").hasAuthority(KAKAO.getRoleType())
+		.antMatchers("/naver").hasAuthority(NAVER.getRoleType())
 		.anyRequest().authenticated()
 			.and()
 		.oauth2Login()
@@ -51,12 +53,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Bean
 	public ClientRegistrationRepository clientRegistrationRepository
 	(@Value("${custom.oauth2.kakao.client-id}") String kakaoClientId,
-	@Value("${custom.oauth2.kakao.client-secret}") String kakaoClientSecret){
+	 @Value("${custom.oauth2.kakao.client-secret}") String kakaoClientSecret,
+	 @Value("${custom.oauth2.naver.client-id}") String naverClientId,
+	 @Value("${custom.oauth2.naver.client-id}") String naverClientSecret){
 
 		List<ClientRegistration> registrations = new ArrayList<>();
 		registrations.add(CustomOAuth2Provider.KAKAO.getBuilder("kakao")
 				.clientId(kakaoClientId)
 				.clientSecret(kakaoClientSecret)
+				.jwkSetUri("temp") //JWK(JSON Web Key)는 암호화 키를 표현하기 위한 다양한 정보를 담은 JSON 객체에 관한 표준이다.
+				.build());
+
+		registrations.add(CustomOAuth2Provider.NAVER.getBuilder("naver")
+				.clientId(naverClientId)
+				.clientSecret(naverClientSecret)
 				.jwkSetUri("temp") //JWK(JSON Web Key)는 암호화 키를 표현하기 위한 다양한 정보를 담은 JSON 객체에 관한 표준이다.
 				.build());
 

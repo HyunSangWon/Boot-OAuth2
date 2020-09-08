@@ -8,7 +8,8 @@
 	<h2>로그인</h2>
 	<br />
 	<br />
-	<a href="javascript:;" class="btn_social" data-social="kakao">카카오톡로그인</a>
+	<a href="javascript:;" class="btn_social" data-social="kakao">카카오톡로그인</a>><br/>
+	<a href="javascript:;" class="btn_social" data-social="naver">네이버 로그인</a>
 	<br />
 	<script> 
 	var socials = document.getElementsByClassName("btn_social"); 
@@ -16,7 +17,7 @@
 		social.addEventListener('click', function(){ 
 			var socialType = this.getAttribute('data-social'); 
 			location.href="/oauth2/authorization/" + socialType;
-			}) 
+			});
 		} 
 	</script>
 </body>
