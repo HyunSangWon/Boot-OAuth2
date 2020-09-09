@@ -7,13 +7,24 @@ spring:
    thymeleaf:
       cache: false
       mode: HTML
+      prefix: file:src/main/resources/templates/
    devtools:
       livereload:
-       enabled: true
+         enabled: true
       restart:
-          enabled: true
+         enabled: true
+   security:
+      oauth2:
+         client:
+            registration:
+               google:
+                  client-id: INSERT_YOUR_ID
+                  client-secret: INSERT_YOUR_SECRET
 custom:
    oauth2:
       kakao:
          client-id: INSERT_YOUR_ID
+         client-secret: INSERT_YOUR_SECRET
+      naver:
+         client-id: INSERT_YOUR_SECRET
          client-secret: INSERT_YOUR_SECRET

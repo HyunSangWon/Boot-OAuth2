@@ -1,13 +1,10 @@
 package com.sangwon.oauth.conf;
 
-import static com.sangwon.oauth.conf.SocialType.KAKAO;
-import static com.sangwon.oauth.conf.SocialType.NAVER;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -35,8 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	public void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.authorizeRequests()
 		.antMatchers("/","/login/**","/auth/**").permitAll()
-		.antMatchers("/kakao").hasAuthority(KAKAO.getRoleType())
-		.antMatchers("/naver").hasAuthority(NAVER.getRoleType())
+		.antMatchers("/kakao").hasAuthority("ROLE_KAKAO")
+		.antMatchers("/naver").hasAuthority("ROLE_NAVER")
 		.anyRequest().authenticated()
 			.and()
 		.oauth2Login()
