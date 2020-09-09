@@ -7,19 +7,21 @@ import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 public enum CustomOAuth2Provider {
 	
 	KAKAO{
+		//참고 https://developers.kakao.com/docs/latest/ko/user-mgmt/common
 		@Override
 		public ClientRegistration.Builder getBuilder(String registrationId) {
 			ClientRegistration.Builder builder = getBuilder(registrationId, ClientAuthenticationMethod.POST,KAKAO_LOGIN_REDIRECT_URL);
-			builder.scope("profile");
+			builder.scope("profile","account_email"); //개인정보 보호항목 ID
 			builder.authorizationUri("https://kauth.kakao.com/oauth/authorize");
 			builder.tokenUri("https://kauth.kakao.com/oauth/token");
 			builder.userInfoUri("https://kapi.kakao.com/v2/user/me");
-			builder.userNameAttributeName("id");
+			builder.userNameAttributeName("id"); //사용자 정보 요청 응답
 			builder.clientName("Kakao");
 			return builder;
 			}
 	},
 	NAVER{
+		//참고 https://developers.naver.com/docs/login/overview/
 		@Override
 		public ClientRegistration.Builder getBuilder(String registrationId) {
 			ClientRegistration.Builder builder = getBuilder(registrationId, ClientAuthenticationMethod.POST,NAVER_LOGIN_REDIRECT_URL);
